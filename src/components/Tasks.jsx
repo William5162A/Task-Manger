@@ -4,14 +4,14 @@ const Tasks = () => {
   const [tasks, setTasks] = useState(() => {
     // تحميل المهام من Local Storage عند بدء التشغيل
     const savedTasks = localStorage.getItem('tasks');
-    return savedTasks 
-      ? JSON.parse(savedTasks) 
+    return savedTasks
+      ? JSON.parse(savedTasks)
       : [
-          { check: false, name: 'Create a React component', edit: false },
-          { check: true, name: 'Add Tailwind styling', edit: false },
-        ];
+        { check: false, name: 'Add Your Task', edit: false },
+
+      ];
   });
-  
+
   const [newTask, setNewTask] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const editInputRefs = useRef([]);
@@ -99,8 +99,7 @@ const Tasks = () => {
     if (window.confirm('Are you sure you want to reset all tasks?')) {
       localStorage.removeItem('tasks');
       setTasks([
-        { check: false, name: 'Create a React component', edit: false },
-        { check: true, name: 'Add Tailwind styling', edit: false },
+        { check: false, name: 'Add Your Task', edit: false },
       ]);
     }
   };
@@ -108,12 +107,12 @@ const Tasks = () => {
   return (
     <div className="max-w-3xl mx-auto p-4">
       <h1 className="text-2xl font-bold text-center mb-6">Task Manager</h1>
-      
+
       <div className="mb-4 flex justify-between items-center">
         <div className="text-sm text-gray-500">
           {isLoading ? "Loading tasks..." : "Data saved in your browser"}
         </div>
-        <button 
+        <button
           onClick={resetTasks}
           className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1 rounded text-sm"
         >
