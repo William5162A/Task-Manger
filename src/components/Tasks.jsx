@@ -637,7 +637,7 @@ const Tasks = () => {
   };
 
   return (
-    <div className="w-[200px] lg:w-[600px] mx-auto p-4">
+    <div className="w-[200px] sm:w-[400px] md:w-j[400px] lg:w-[600px] mx-auto pt-4 ">
       <h1 className="text-lg lg:text-2xl font-bold text-center mb-6">Task Manager</h1>
 
       <div className="mb-4 flex flex-cold justify-between items-center">
@@ -652,23 +652,25 @@ const Tasks = () => {
         </button>
       </div>
 
-      <div className="py-5 bg-white rounded-lg shadow-md p-6">
+      <div className="py-5 bg-white rounded-lg shadow-md p-6 bg-yellow-400">
         {/* إضافة مهمة جديدة */}
-        <div className="flex pb-6">
+        <div className="flex flex-col lg:flex-row pb-6 bg-red-400">
           <input
             type="text"
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
             placeholder="Add a new task"
-            className="flex-1 p-3 border-2 border-gray-300 rounded-l-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 border-2 border-gray-300 lg:rounded-l-xl rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
             onKeyPress={(e) => e.key === 'Enter' && addTask()}
           />
-          <button
-            onClick={addTask}
-            className="bg-blue-600 px-6 text-white hover:bg-blue-800 transition-all rounded-r-xl font-medium"
-          >
-            Add
-          </button>
+         <div className={' w-full flex items-center justify-center'}>
+           <button
+             onClick={addTask}
+             className="bg-blue-600 flex justify-center text-white hover:bg-blue-800 transition-all lg:rounded-r-xl rounded-xl font-medium w-[75px] "
+           >
+             Add
+           </button>
+         </div>
         </div>
 
         <hr className="border-gray-200 my-4" />
