@@ -640,13 +640,13 @@ const Tasks = () => {
     <div className="w-[330px] sm:w-[400px] md:w-d[400px] lg:w-[600px] mx-auto pt-4 ">
       <h1 className="text-lg lg:text-2xl font-bold text-center mb-6">Task Manager</h1>
 
-      <div className="mb-4 flex flex-cold justify-between items-center">
-        <div className="text-sm text-gray-500 ">
+      <div className="mb-4 flex flex-cold items-center">
+        <div className="text-sm text-gray-500 mx-5 ">
           {isLoading ? "Loading tasks..." : "Data saved in your browser"}
         </div>
         <button
           onClick={resetTasks}
-          className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1 rounded text-sm"
+          className="bg-gray-300 hover:bg-gray-400 text-gray-700 px-3 py-1 rounded text-sm duration-300"
         >
           Reset Tasks
         </button>
@@ -654,13 +654,13 @@ const Tasks = () => {
 
       <div className="py-5 bg-white rounded-lg shadow-md p-6 bg-yellow-400x">
         {/* إضافة مهمة جديدة */}
-        <div className="flex flex-col lg:flex-row  bg-rxed-400">
+        <div className="flex flex-col sm:flex-row  bg-rxed-400">
           <input
             type="text"
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
             placeholder="Add a new task"
-            className="flex-1 border-2 border-gray-300 lg:rounded-l-xl rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 mb-5 p-3 "
+            className="flex-1 border-2 border-gray-300 lg:rounded-l-xl rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 mb-5 sm:mb-0 p-3 "
             onKeyPress={(e) => e.key === 'Enter' && addTask()}
           />
          <div className={' w-full flex items-center justify-center'}>
@@ -687,14 +687,14 @@ const Tasks = () => {
                 className={`flex items-center p-4 rounded-xl border border-gray-200 my-3 ${
                   task.check ? 'bg-green-50' : 'bg-white'
                 } transition-all duration-200 shadow-sm hover:shadow-md
-                flex-col`}
+                flex-col sm:flex-row items-center `}
                 key={index}
               >
                 {/* صندوق الاختيار */}
 
 
 
-                <div className={'flex justify-between g-green-400 w-full mb-4'}>
+                <div className={'flex items-center justify-between g-green-400 w-full mb-4 sm:mb-0 '}>
                   <input
                     type="checkbox"
                     checked={task.check}
@@ -756,16 +756,16 @@ const Tasks = () => {
 
       {/* إحصائيات المهام */}
       <div className="bg-white rounded-lg shadow-md mt-6 p-4">
-        <div className="flex justify-between py-2 text-gray-700 font-medium">
-          <div className="flex items-center">
+        <div className="flex flex-col sm:flex-row sm:gap-2  justify-center py-2 text-gray-700 font-medium">
+          <div className="flex items-center justify-center">
             <span className="mr-2">📋</span>
             <p>Total tasks: {tasks.length}</p>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center justify-center">
             <span className="mr-2">✅</span>
             <p>Completed: {completedTasksCount}</p>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center justify-center">
             <span className="mr-2">⏳</span>
             <p>Pending: {tasks.length - completedTasksCount}</p>
           </div>
