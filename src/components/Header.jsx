@@ -71,8 +71,7 @@ const Header = () => {
             />
           ) : (
             username
-          )}{' '}
-          Task Manager
+          )}'s Task Manager
         </h1>
         <p className="text-gray-400 mt-3 text-[12px] lg:text-2xl">
           Organize Your Work Efficiently
