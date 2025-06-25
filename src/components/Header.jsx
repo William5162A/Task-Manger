@@ -10,15 +10,30 @@ const Header = () => {
       : 'UserName';
   });
   return (
-    <div className={'w-full'}>
+    <div className={'w-full relative'}>
 
-      {btnName ? '' :
-        <button className={'bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors'} onClick={() => setBtnName(true)}></button>
+      {btnName ?
+        <button className={'bg-blue-600 text-white text-xs p-1  rounded-lg hover:bg-blue-800 transition-colors absolute right-2 top-2 '} onClick={() => setBtnName(false)}>
+          Save
+        </button>
+        :
+        <button className={'bg-blue-600 text-white text-xs p-1  rounded-lg hover:bg-blue-800 transition-colors absolute right-2  top-2 '} onClick={() => setBtnName(true)}>
+          Change Your Name
+        </button>
       }
 
-      <div className={'flex flex-col items-center select-none mt-6 bg-green-40c0 w-full'}>
+      <div className={'flex flex-col items-center select-none mt-10  bg-green-40c0 w-full'}>
         <h1 className={'text-blue-600 text-2xl lg:text-2xl font-bold text-center'}>
-          {username} Task Manager
+          {
+            btnName ?
+              <input type='text' className={'w-[150px] border border-blue-400 rounded-2xl p-1 '} value={username} onChange={(e) => {
+                setUserName(e.target.value)
+                localStorage.setItem('username', JSON.stringify(e.target.value));
+              }} onKeyPress={(e) => e.key === 'Enter' && setBtnName(false)}/>
+              :
+              username
+
+          } Task Manager
         </h1>
         <p className={'text-gray-400 mt-3 text-[12px] lg:text-2xl'}>
           Organize Your Work Efficiently
@@ -28,3 +43,10 @@ const Header = () => {
   )
 }
 export default Header
+
+اريد ان تقيم لي الصفحة وان تقترح تعديلات
+واريد ان تضيف لي تعديلات وهي
+عند الضغط على زر Change Your Name اريد ان يتم وضع foucs على ال input للاسم
+واريد كتابة امر لتنفيذ 
+setBtnName(false)
+عند الضغط على اي مكان فارغ في الشاشة
