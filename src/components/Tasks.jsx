@@ -743,13 +743,13 @@ const Tasks = () => {
                   {/* محتوى المهمة */}
                   <div className="mx-4 flex-1 min-w-0 text-center">
                     {task.edit ? (
-                      <div className="flex items-center">
+                      <div className="flex items-center bg-green-400">
                         <input
                           ref={el => editInputRefs.current[index] = el}
                           type="text"
                           value={task.name}
                           onChange={(e) => updateTaskName(index, e.target.value)}
-                          className="flex-1 p-2 border-2 border-blue-400 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 "
+                          className="w-full p-2 border-2 border-blue-400 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 "
                         />
                         <button
                           onClick={() => saveEdit(index)}
