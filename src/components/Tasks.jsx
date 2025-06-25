@@ -660,7 +660,7 @@ const Tasks = () => {
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
             placeholder="Add a new task"
-            className="flex-1 border-2 border-gray-300 lg:rounded-l-xl rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 mb-5"
+            className="flex-1 border-2 border-gray-300 lg:rounded-l-xl rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 mb-5 p-3 "
             onKeyPress={(e) => e.key === 'Enter' && addTask()}
           />
          <div className={' w-full flex items-center justify-center'}>
@@ -686,55 +686,64 @@ const Tasks = () => {
               <div
                 className={`flex items-center p-4 rounded-xl border border-gray-200 my-3 ${
                   task.check ? 'bg-green-50' : 'bg-white'
-                } transition-all duration-200 shadow-sm hover:shadow-md`}
+                } transition-all duration-200 shadow-sm hover:shadow-md
+                flex-col`}
                 key={index}
               >
                 {/* صندوق الاختيار */}
-                <input
-                  type="checkbox"
-                  checked={task.check}
-                  onChange={() => toggleCheck(index)}
-                  className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer"
-                />
 
-                {/* محتوى المهمة */}
-                <div className="mx-4 flex-1 min-w-0">
-                  {task.edit ? (
-                    <div className="flex items-center">
-                      <input
-                        ref={el => editInputRefs.current[index] = el}
-                        type="text"
-                        value={task.name}
-                        onChange={(e) => updateTaskName(index, e.target.value)}
-                        className="flex-1 p-2 border-2 border-blue-400 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
-                      <button
-                        onClick={() => saveEdit(index)}
-                        className="bg-green-500 text-white px-4 py-2 rounded-r-lg hover:bg-green-600 transition-colors font-medium"
-                      >
-                        Save
-                      </button>
-                    </div>
-                  ) : task.check ? (
-                    <del className="text-gray-600 block truncate">{task.name}</del>
-                  ) : (
-                    <span className="text-gray-800 block truncate">{task.name}</span>
-                  )}
+
+
+                <div className={'flex justify-between g-green-400 w-full mb-4'}>
+                  <input
+                    type="checkbox"
+                    checked={task.check}
+                    onChange={() => toggleCheck(index)}
+                    className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500 cursor-pointer"
+                  />
+
+                  {/* محتوى المهمة */}
+                  <div className="mx-4 flex-1 min-w-0 text-center">
+                    {task.edit ? (
+                      <div className="flex items-center">
+                        <input
+                          ref={el => editInputRefs.current[index] = el}
+                          type="text"
+                          value={task.name}
+                          onChange={(e) => updateTaskName(index, e.target.value)}
+                          className="flex-1 p-2 border-2 border-blue-400 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                        <button
+                          onClick={() => saveEdit(index)}
+                          className="bg-green-500 text-white px-4 py-2 rounded-r-lg hover:bg-green-600 transition-colors font-medium"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    ) : task.check ? (
+                      <del className="text-gray-600 block truncate">{task.name}</del>
+                    ) : (
+                      <span className="text-gray-800 block truncate">{task.name}</span>
+                    )}
+                  </div>
                 </div>
 
+
+
                 {/* أزرار الإجراءات */}
-                <div className="flex space-x-2 min-w-[140px] justify-end">
+
+                <div className="flex space-x-2 min-w-[140px] justify-end ">
                   {!task.edit ? (
                     <button
                       onClick={() => startEdit(index)}
-                      className="bg-blue-500 text-white px-3 py-1.5 rounded-lg hover:bg-blue-600 transition-colors font-medium text-sm"
+                      className="bg-blue-500 text-white px-3 py-1.5 rounded-lg hover:bg-blue-600 transition-colors font-medium text-sm flex-1"
                     >
                       Edit
                     </button>
                   ) : null}
                   <button
                     onClick={() => deleteTask(index)}
-                    className="bg-red-500 text-white px-3 py-1.5 rounded-lg hover:bg-red-600 transition-colors font-medium text-sm"
+                    className="bg-red-500 text-white px-3 py-1.5 rounded-lg hover:bg-red-600 transition-colors font-medium text-sm flex-1"
                   >
                     Delete
                   </button>
