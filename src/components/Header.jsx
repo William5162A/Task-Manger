@@ -41,14 +41,14 @@ const Header = () => {
     <div className="w-full relative header-container">
       {btnName ? (
         <button
-          className="bg-blue-600 text-white text-xs p-1 rounded-lg hover:bg-blue-800 transition-colors absolute right-2 top-2"
+          className="bg-blue-400 text-white text-xs p-1 rounded-lg hover:bg-blue-500 transition-colors absolute right-2 top-2"
           onClick={() => setBtnName(false)}
         >
           Save
         </button>
       ) : (
         <button
-          className="bg-blue-600 text-white text-xs p-1 rounded-lg hover:bg-blue-800 transition-colors absolute right-2 top-2"
+          className="bg-blue-400 text-white text-xs p-1 rounded-lg hover:bg-blue-500 transition-colors absolute right-2 top-2"
           onClick={() => setBtnName(true)}
         >
           Change Your Name
