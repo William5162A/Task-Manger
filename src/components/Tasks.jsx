@@ -637,10 +637,12 @@ const Tasks = () => {
   };
 
   return (
-    <div className="w-[330px] sm:w-[400px] md:w-d[400px] lg:w-[600px] mx-auto pt-4 ">
-      <h1 className="text-lg lg:text-2xl font-bold text-center mb-6">Task Manager</h1>
+    <div className="w-[330px] sm:w-[400px] md:w-d[400px] lg:w-[600px] mx-auto pt-4 sbg-red-400">
+      {/*<h1 className="text-lg lg:text-2xl font-bold text-center mb-6">Task Manager</h1>*/}
 
-      <div className="mb-4 flex flex-cold items-center">
+      <hr className="border-gray-200 mb-5" />
+
+      <div className="mb-4 flex flex-cold sm:justify-between items-center ">
         <div className="text-sm text-gray-500 mx-5 ">
           {isLoading ? "Loading tasks..." : "Data saved in your browser"}
         </div>
@@ -652,9 +654,9 @@ const Tasks = () => {
         </button>
       </div>
 
-      <div className="py-5 bg-white rounded-lg shadow-md p-6 bg-yellow-400x">
+      <div className="py-5 bg-white rounded-lg shadow-md p-6 bg-yellow-400h">
         {/* إضافة مهمة جديدة */}
-        <div className="flex flex-col sm:flex-row  bg-rxed-400">
+        <div className="flex flex-col sm:flex-row  bg-reds-400">
           <input
             type="text"
             value={newTask}
@@ -663,10 +665,10 @@ const Tasks = () => {
             className="flex-1 border-2 border-gray-300 lg:rounded-l-xl rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 mb-5 sm:mb-0 p-3 "
             onKeyPress={(e) => e.key === 'Enter' && addTask()}
           />
-         <div className={' w-full flex items-center justify-center'}>
+         <div className={' w-fulel flex items-center justify-center '}>
            <button
              onClick={addTask}
-             className="bg-blue-600 flex justify-center text-white hover:bg-blue-800 transition-all lg:rounded-r-xl rounded-xl font-medium w-[75px] p-3 px-5 "
+             className="bg-blue-600 flex justify-center text-white hover:bg-blue-800 transition-all lg:rounded-r-xl rounded-xl font-medium w-[75px] p-3 "
            >
              Add
            </button>
