@@ -563,14 +563,50 @@ const Tasks = () => {
     setIsLoading(false);
   }, []);
 
-  // إضافة مهمة جديدة
+  // دالة لتنسيق النص بحيث يكون أول حرف من كل كلمة كبير
+  const capitalizeWords = (str) => {
+    return str
+      .split(' ') // تقسيم النص إلى كلمات
+      .map(word =>
+        word.length > 0
+          ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+          : word
+      )
+      .join(' '); // جمع الكلمات مرة أخرى
+  };
+
+  // إضافة مهمة جديدة (مع تطبيق التنسيق)
   const addTask = () => {
     if (newTask.trim() !== '') {
-      setTasks([...tasks, { check: false, name: newTask, edit: false }]);
+      const formattedTask = capitalizeWords(newTask.trim());
+      setTasks([...tasks, { check: false, name: formattedTask, edit: false }]);
       setNewTask('');
     } else {
       alert('Please enter a task name');
     }
+  };
+
+  // تحديث اسم المهمة أثناء التعديل (مع تطبيق التنسيق عند الحفظ)
+  const updateTaskName = (index, value) => {
+    setTasks(prevTasks => {
+      return prevTasks.map((task, i) =>
+        i === index ? { ...task, name: value } : task
+      );
+    });
+  };
+
+  // حفظ التعديلات (مع تطبيق التنسيق)
+  const saveEdit = (index) => {
+    setTasks(prevTasks => {
+      return prevTasks.map((task, i) => {
+        if (i === index) {
+          // تطبيق التنسيق على الاسم قبل الحفظ
+          const formattedName = capitalizeWords(task.name.trim());
+          return { ...task, name: formattedName, edit: false };
+        }
+        return task;
+      });
+    });
   };
 
   // تبديل حالة المهمة (تمت/لم تتم)
@@ -593,13 +629,13 @@ const Tasks = () => {
   };
 
   // حفظ التعديلات
-  const saveEdit = (index) => {
-    setTasks(prevTasks => {
-      return prevTasks.map((task, i) =>
-        i === index ? { ...task, edit: false } : task
-      );
-    });
-  };
+  // const saveEdit = (index) => {
+  //   setTasks(prevTasks => {
+  //     return prevTasks.map((task, i) =>
+  //       i === index ? { ...task, edit: false } : task
+  //     );
+  //   });
+  // };
 
   // حذف المهمة
   const deleteTask = (index) => {
@@ -607,13 +643,13 @@ const Tasks = () => {
   };
 
   // تحديث اسم المهمة أثناء التعديل
-  const updateTaskName = (index, value) => {
-    setTasks(prevTasks => {
-      return prevTasks.map((task, i) =>
-        i === index ? { ...task, name: value } : task
-      );
-    });
-  };
+  // const updateTaskName = (index, value) => {
+  //   setTasks(prevTasks => {
+  //     return prevTasks.map((task, i) =>
+  //       i === index ? { ...task, name: value } : task
+  //     );
+  //   });
+  // };
 
   // التركيز على حقل التعديل عند التصيير
   useEffect(() => {
@@ -713,7 +749,7 @@ const Tasks = () => {
                           type="text"
                           value={task.name}
                           onChange={(e) => updateTaskName(index, e.target.value)}
-                          className="flex-1 p-2 border-2 border-blue-400 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="flex-1 p-2 border-2 border-blue-400 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 "
                         />
                         <button
                           onClick={() => saveEdit(index)}
