@@ -637,7 +637,7 @@ const Tasks = () => {
   };
 
   return (
-    <div className="w-[200px] sm:w-[400px] md:w-j[400px] lg:w-[600px] mx-auto pt-4 ">
+    <div className="w-[330px] sm:w-[400px] md:w-d[400px] lg:w-[600px] mx-auto pt-4 ">
       <h1 className="text-lg lg:text-2xl font-bold text-center mb-6">Task Manager</h1>
 
       <div className="mb-4 flex flex-cold justify-between items-center">
